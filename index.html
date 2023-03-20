@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calories Calculator</title>
+</head>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }} " />
+<body>
+  <h1>Calories Calculator</h1>
+  <form method="post" action='/'>
+    <label for="name">Name of food:</label>
+    <input type="text" id="name" name="name">
+    <label for="calories">Calories (in kcal):</label>
+    <input type="number" id="calories" name="calories">
+    <button type="submit">Add meal</button>
+  </form>
+  <h2>Meal List</h2>
+  <ul>
+      {% for meal in meals %}
+        <li>{{ meal['name'] }}: {{ meal['calories'] }} kcal</li>
+      {% endfor %}
+  </ul>
+  <p>Total Calories: {{ total_calories }} kcal</p>
+</body>
+</html>
